@@ -1,0 +1,3 @@
+# CORS headers are handled in PHP via cors.php to avoid duplicate headers.
+# This file is intentionally left empty to prevent repeated Access-Control headers.
+    
