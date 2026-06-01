@@ -1,6 +1,4 @@
 <?php
-declare(strict_types=1);
-
 // Headers CORS
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
