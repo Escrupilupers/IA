@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de APIs - 9amm</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+        .header h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        .header p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+        .card h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+        .card p {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        .card .badge {
+            display: inline-block;
+            background: #e7f3ff;
+            color: #004085;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-bottom: 15px;
+        }
+        .btn {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .btn:hover {
+            background: #5568d3;
+        }
+        .btn.secondary {
+            background: #6c757d;
+            margin-left: 10px;
+        }
+        .btn.secondary:hover {
+            background: #5a6268;
+        }
+        .btn.danger {
+            background: #e74c3c;
+        }
+        .btn.danger:hover {
+            background: #c0392b;
+        }
+        .feature-list {
+            list-style: none;
+            margin-bottom: 15px;
+        }
+        .feature-list li {
+            padding: 8px 0;
+            color: #666;
+            border-bottom: 1px solid #eee;
+        }
+        .feature-list li:before {
+            content: "✓ ";
+            color: #28a745;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        .info-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            color: #856404;
+        }
+        .success-box {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            color: #155724;
+        }
+        .section {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .section h2 {
+            color: #333;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table th {
+            background: #f8f9fa;
+            padding: 12px;
+            text-align: left;
+            border-bottom: 2px solid #ddd;
+            font-weight: 600;
+            color: #333;
+        }
+        table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        table tr:hover {
+            background: #f8f9fa;
+        }
+        .code-block {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+        }
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎛️ Panel de APIs - 9amm</h1>
+            <p>Centro de control de autenticación y gestión de usuarios</p>
+        </div>
+
+        <div class="grid">
+            <!-- Admin Panel Card -->
+            <div class="card">
+                <h2>👨‍💼 Panel Admin</h2>
+                <span class="badge">Nuevo</span>
+                <p>Interfaz moderna para gestionar usuarios. Solo accesible para administradores.</p>
+                <ul class="feature-list">
+                    <li>CRUD completo de usuarios</li>
+                    <li>Gestión de roles</li>
+                    <li>Control de estado</li>
+                    <li>Autenticación segura</li>
+                </ul>
+                <div>
+                    <a href="admin-panel.html" class="btn">Abrir Panel</a>
+                    <a href="check.php" class="btn secondary">Verificar Setup</a>
+                </div>
+            </div>
+
+            <!-- Documentation Card -->
+            <div class="card">
+                <h2>📚 Documentación</h2>
+                <span class="badge">Guías</span>
+                <p>Accede a la documentación completa y guías de uso del panel.</p>
+                <ul class="feature-list">
+                    <li>Guía rápida</li>
+                    <li>Documentación completa</li>
+                    <li>Ejemplos de integración</li>
+                    <li>Troubleshooting</li>
+                </ul>
+                <div>
+                    <a href="GUIA-RAPIDA.md" class="btn">Guía Rápida</a>
+                    <a href="README.md" class="btn secondary">Documentación</a>
+                </div>
+            </div>
+
+            <!-- API Documentation Card -->
+            <div class="card">
+                <h2>🔌 APIs REST</h2>
+                <span class="badge">Endpoints</span>
+                <p>Endpoints para integración con aplicaciones externas.</p>
+                <ul class="feature-list">
+                    <li>auth.php - Con sesiones</li>
+                    <li>usuarios.php - CRUD simple</li>
+                    <li>Validación de permisos</li>
+                    <li>Respuestas en JSON</li>
+                </ul>
+                <div class="success-box" style="margin-top: 15px;">
+                    <strong>✓ Credenciales de prueba:</strong><br>
+                    Usuario: <code>admin</code><br>
+                    Contraseña: <code>admin123</code>
+                </div>
+            </div>
+        </div>
+
+        <!-- Getting Started Section -->
+        <div class="section">
+            <h2>🚀 Comenzar en 3 pasos</h2>
+            <table>
+                <tr>
+                    <th style="width: 50px;">Paso</th>
+                    <th>Descripción</th>
+                    <th>Archivo</th>
+                </tr>
+                <tr>
+                    <td><strong>1</strong></td>
+                    <td>Ejecutar el script SQL para crear la tabla de usuarios y agregar el primer admin</td>
+                    <td><code>init-usuarios.sql</code></td>
+                </tr>
+                <tr>
+                    <td><strong>2</strong></td>
+                    <td>Abrir el panel en tu navegador</td>
+                    <td><a href="admin-panel.html">admin-panel.html</a></td>
+                </tr>
+                <tr>
+                    <td><strong>3</strong></td>
+                    <td>Hacer login con admin/admin123 y comenzar a gestionar usuarios</td>
+                    <td>Ya está configurado</td>
+                </tr>
+            </table>
+            <div class="info-box">
+                <strong>💡 Tip:</strong> Ejecuta <a href="check.php" style="color: #004085;">check.php</a> para verificar que tu instalación esté correcta antes de comenzar.
+            </div>
+        </div>
+
+        <!-- API Endpoints Section -->
+        <div class="section">
+            <h2>📡 Endpoints Disponibles</h2>
+            <p><strong>Base URL:</strong> <code>http://localhost/9amm/IA/apis/</code></p>
+            
+            <h3 style="margin-top: 20px; margin-bottom: 10px;">🔒 auth.php (Con autenticación de sesión)</h3>
+            <table>
+                <tr>
+                    <th>Método</th>
+                    <th>Descripción</th>
+                    <th>Requiere Auth</th>
+                </tr>
+                <tr>
+                    <td><code>POST</code></td>
+                    <td>Login: <code>{"login": true, "usuario": "admin", "contrasena": "..."}</code></td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td><code>POST</code></td>
+                    <td>Logout: <code>{"logout": true}</code></td>
+                    <td>Sí</td>
+                </tr>
+                <tr>
+                    <td><code>GET</code></td>
+                    <td>Listar usuarios</td>
+                    <td>Sí</td>
+                </tr>
+                <tr>
+                    <td><code>POST</code></td>
+                    <td>Crear usuario (no incluir id)</td>
+                    <td>Sí</td>
+                </tr>
+                <tr>
+                    <td><code>PUT</code></td>
+                    <td>Actualizar usuario (incluir id)</td>
+                    <td>Sí</td>
+                </tr>
+                <tr>
+                    <td><code>DELETE</code></td>
+                    <td>Eliminar usuario: <code>?id=X</code></td>
+                    <td>Sí</td>
+                </tr>
+            </table>
+
+            <h3 style="margin-top: 20px; margin-bottom: 10px;">usuarios.php (Sin autenticación de sesión)</h3>
+            <table>
+                <tr>
+                    <th>Método</th>
+                    <th>Descripción</th>
+                    <th>Auth</th>
+                </tr>
+                <tr>
+                    <td><code>GET</code></td>
+                    <td>Listar usuarios (requiere <code>rol=admin</code> en header o body)</td>
+                    <td>rol param</td>
+                </tr>
+                <tr>
+                    <td><code>POST</code></td>
+                    <td>Crear usuario (requiere <code>rol=admin</code>)</td>
+                    <td>rol param</td>
+                </tr>
+                <tr>
+                    <td><code>PUT</code></td>
+                    <td>Actualizar usuario (requiere <code>rol=admin</code>)</td>
+                    <td>rol param</td>
+                </tr>
+                <tr>
+                    <td><code>DELETE</code></td>
+                    <td>Eliminar usuario (requiere <code>rol=admin</code>)</td>
+                    <td>rol param</td>
+                </tr>
+            </table>
+
+            <div class="code-block">
+// Ejemplo: Login con fetch
+fetch('auth.php', {
+    method: 'POST',
+    credentials: 'include',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+        login: true,
+        usuario: 'admin',
+        contrasena: 'admin123'
+    })
+})
+            </div>
+        </div>
+
+        <!-- Files Section -->
+        <div class="section">
+            <h2>📁 Archivos del Sistema</h2>
+            <table>
+                <tr>
+                    <th>Archivo</th>
+                    <th>Descripción</th>
+                    <th>Tipo</th>
+                </tr>
+                <tr>
+                    <td><strong>admin-panel.html</strong></td>
+                    <td>Panel de administración (UI)</td>
+                    <td>🎨 Frontend</td>
+                </tr>
+                <tr>
+                    <td><strong>auth.php</strong></td>
+                    <td>API con autenticación de sesión</td>
+                    <td>🔒 Backend</td>
+                </tr>
+                <tr>
+                    <td><strong>usuarios.php</strong></td>
+                    <td>API CRUD de usuarios (sin sesión)</td>
+                    <td>🔌 Backend</td>
+                </tr>
+                <tr>
+                    <td><strong>config.php</strong></td>
+                    <td>Configuración de base de datos</td>
+                    <td>⚙️ Config</td>
+                </tr>
+                <tr>
+                    <td><strong>cors.php</strong></td>
+                    <td>Headers CORS</td>
+                    <td>⚙️ Config</td>
+                </tr>
+                <tr>
+                    <td><strong>init-usuarios.sql</strong></td>
+                    <td>Script para crear tabla y primer admin</td>
+                    <td>🗄️ SQL</td>
+                </tr>
+                <tr>
+                    <td><strong>GUIA-RAPIDA.md</strong></td>
+                    <td>Guía rápida de inicio</td>
+                    <td>📖 Docs</td>
+                </tr>
+                <tr>
+                    <td><strong>README.md</strong></td>
+                    <td>Documentación completa</td>
+                    <td>📖 Docs</td>
+                </tr>
+                <tr>
+                    <td><strong>check.php</strong></td>
+                    <td>Verificador de instalación</td>
+                    <td>🔍 Herramienta</td>
+                </tr>
+                <tr>
+                    <td><strong>index.html</strong></td>
+                    <td>Este archivo - Centro de control</td>
+                    <td>🎨 Frontend</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Quick Links Section -->
+        <div class="section">
+            <h2>🔗 Enlaces Rápidos</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px;">
+                <a href="admin-panel.html" class="btn" style="text-align: center; display: block;">🎛️ Panel Admin</a>
+                <a href="check.php" class="btn" style="text-align: center; display: block;">✓ Verificar Setup</a>
+                <a href="GUIA-RAPIDA.md" class="btn secondary" style="text-align: center; display: block;">⚡ Guía Rápida</a>
+                <a href="README.md" class="btn secondary" style="text-align: center; display: block;">📚 Documentación</a>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>🎉 Panel de Administración - 9amm Project</p>
+            <p style="font-size: 12px; margin-top: 10px;">Última actualización: 2026-06-01</p>
+        </div>
+    </div>
+</body>
+</html>
